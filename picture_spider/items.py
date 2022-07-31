@@ -12,3 +12,9 @@ class PictureSpiderItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
+
+
+class ZhaiNanSpiderItem(scrapy.Item):
+    title = scrapy.Field()
+    # name = scrapy.Field()
+    src = scrapy.Field()

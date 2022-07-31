@@ -8,11 +8,17 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+import os
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 BOT_NAME = 'picture_spider'
 
 SPIDER_MODULES = ['picture_spider.spiders']
 NEWSPIDER_MODULE = 'picture_spider.spiders'
+
+IMAGES_STORE = os.path.join(BASE_DIR, 'tuku')
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -64,9 +70,10 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'picture_spider.pipelines.PictureSpiderPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'picture_spider.pipelines.PictureSpiderPipeline': 300,
+   'picture_spider.pipelines.MyImagesPipeline': 301,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
